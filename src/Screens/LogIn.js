@@ -1,16 +1,19 @@
-import React from 'react';
-import { TouchableWithoutFeedback, StyleSheet, View, Image, Linking } from 'react-native';
-import { Icon, Input, Text, Button } from '@ui-kitten/components';
-
+// React
+import { useState, useContext } from 'react';
 import { useForm, Controller } from "react-hook-form"
+import { TouchableWithoutFeedback, StyleSheet, View, Image, Linking, Alert } from 'react-native';
+// Kitten UI
+import { Icon, Input, Text, Button } from '@ui-kitten/components';
+// Axios
+import axios from 'axios';
 // IMGs
 import LOGO from '../../assets/images/logo 1.png';
+import { AuthContext } from '../Context/AuthContext';
 
 const LogInScreen = () => {
-    const [Emailvalue, SetEmailValue] = React.useState('');
-    const [Contravalue, SetContraValue] = React.useState('');
+    const {Login} = useContext(AuthContext)
 
-    const [secureTextEntry, setSecureTextEntry] = React.useState(true);
+    const [secureTextEntry, setSecureTextEntry] = useState(true);
 
     const toggleSecureEntry = () => {
         setSecureTextEntry(!secureTextEntry);
@@ -31,15 +34,37 @@ const LogInScreen = () => {
         formState: { errors },
     } = useForm({
         defaultValues: {
-            Pass: "",
-            Email: '',
+            email: "",
+            password: '',
         },
     })
 
     const onSubmit = (data) => {
         console.log(data)
+        axios({
+            method: 'post',
+            url: 'http://192.168.1.36:3000/users/login',
+            data: data,
+            headers: {
+                "Accept": "application/json"
+            },
+        }).then(function (response) {
 
-        console.log(errors)
+            // Alert.alert('Genail', 'estas logueado');
+
+            console.log(response.data)
+
+            Login(response.data.Token)
+
+            // redirijo al usuario
+            // navigate('/' + forward_url.replace(/-/g, "/"))
+
+        }).catch(function (error) {
+
+            Alert.alert('pucha :(', 'hubo un error');
+
+            console.log(error);
+        });
     }
 
 
@@ -71,7 +96,7 @@ const LogInScreen = () => {
                         style={styles.Input}
                     />
                 )}
-                name="Email"
+                name="email"
             />
             <Controller
                 control={control}
@@ -92,7 +117,7 @@ const LogInScreen = () => {
                         style={styles.Input}
                     />
                 )}
-                name="Pass"
+                name="password"
             />
 
             <Button onPress={handleSubmit(onSubmit)}>
