@@ -10,7 +10,7 @@ import axios from 'axios';
 import LOGO from '../../assets/images/logo 1.png';
 import { AuthContext } from '../Context/AuthContext';
 
-const LogInScreen = () => {
+const LogInScreen = ({navigation}) => {
     const {Login} = useContext(AuthContext)
 
     const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -125,7 +125,7 @@ const LogInScreen = () => {
             </Button>
 
             <View style={styles.buttonContainer}>
-                <Button appearance='ghost'>
+                <Button appearance='ghost' onPress={() => navigation.navigate('SingIn')}>
                     Crear una cuenta
                 </Button>
                 <Button appearance='ghost' onPress={() => Linking.openURL('https://www.withsisa.com/forgotPassword')}>

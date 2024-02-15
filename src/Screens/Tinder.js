@@ -7,7 +7,7 @@ import AnimatedStack from '../Components/AnimatedStack';
 
 // import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-const HomeScreen = () => {
+const TinderScreen = () => {
     const onSwipeLeft = user => {
         console.warn('swipe left', user.Usuario.name);
     };
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default HomeScreen;
+export default TinderScreen;

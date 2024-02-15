@@ -2,20 +2,20 @@
 import { useContext } from 'react';
 // context
 import { AuthContext } from '../Context/AuthContext';
-// components
-import LogInScreen from "../Screens/LogIn"
-import HomeScreen from "../Screens/Home"
+// stacks
+import LogInStack from './Stacks/LogInStack';
+import HomeStack from './Stacks/HomeStack';
 
 export default function AppNavigation() {
     const {UserToken} = useContext(AuthContext)
 
     if (UserToken != null) {
         return (
-            <HomeScreen />
+            <HomeStack/>
         )
     } else {
         return (
-            <LogInScreen />
+            <LogInStack/>
         )
     }
 
