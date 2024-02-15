@@ -7,6 +7,7 @@ import { EvaIconsPack } from '@ui-kitten/eva-icons';
 // componentes
 import HomeScreen from './src/Screens/Home';
 import LogInScreen from './src/Screens/LogIn';
+import SingInScreen from './src/Screens/SingIn';
 import { AuthProvider } from './src/Context/AuthContext';
 
 export default () => (
@@ -15,7 +16,8 @@ export default () => (
     <ApplicationProvider {...eva} theme={eva.dark}>
 
       {/* <HomeScreen /> */}
-      <LogInScreen />
+      {/* <LogInScreen /> */}
+      <SingInScreen />
     </ApplicationProvider>
 
   </AuthProvider >
