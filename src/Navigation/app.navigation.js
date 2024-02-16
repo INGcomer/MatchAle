@@ -15,7 +15,8 @@ export default function AppNavigation() {
         )
     } else {
         return (
-            <LogInStack/>
+            // <LogInStack/>
+            <HomeStack/>
         )
     }
 

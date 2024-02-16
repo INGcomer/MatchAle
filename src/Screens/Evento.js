@@ -8,7 +8,7 @@ const EventoScreen = () => {
     return (
         <View style={styles.pageContainer}>
 
-            <Text category='h1'> Ingresar </Text>
+            <Text category='h1'> EventoScreen </Text>
 
         </View>
     );
