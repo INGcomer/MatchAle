@@ -4,9 +4,9 @@ import { Icon, Input, Text, Button, Datepicker } from '@ui-kitten/components';
 
 import { useForm, Controller } from "react-hook-form"
 // IMGs
-import LOGO from '../../assets/images/logo 1.png';
+import LOGO from '../../../assets/images/logo 1.png';
 
-const SingInScreen = () => {
+const DatosPersonales = ({navigation}) => {
     const [secureTextEntry, setSecureTextEntry] = React.useState(true);
     const [PassError, SetPassError] = React.useState(false);
 
@@ -55,6 +55,8 @@ const SingInScreen = () => {
         console.log(data)
 
         console.log(errors)
+
+        // navigation.navigate('SingIn/DatosEmpresa')
     }
 
 
@@ -66,6 +68,7 @@ const SingInScreen = () => {
             />
 
             <Text category='h1'> Crear una cuenta </Text>
+            <Text category='s1'> Datos personales </Text>
 
             <Controller
                 control={control}
@@ -154,8 +157,11 @@ const SingInScreen = () => {
                 min={new Date('1924-02-14')}
             />
 
-            <Button onPress={handleSubmit(onSubmit)}>
-                CREAR
+            {/* <Button onPress={handleSubmit(onSubmit)}>
+                SIGUIENTE
+            </Button> */}
+            <Button onPress={() => {navigation.navigate('SingIn/DatosEmpresa')}}>
+                SIGUIENTE
             </Button>
 
         </View>
@@ -180,4 +186,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SingInScreen;
+export default DatosPersonales;

@@ -2,13 +2,14 @@
 import { useState, useContext } from 'react';
 import { useForm, Controller } from "react-hook-form"
 import { TouchableWithoutFeedback, StyleSheet, View, Image, Linking, Alert } from 'react-native';
+// Context
+import { AuthContext } from '../Context/AuthContext';
 // Kitten UI
 import { Icon, Input, Text, Button } from '@ui-kitten/components';
 // Axios
 import axios from 'axios';
 // IMGs
 import LOGO from '../../assets/images/logo 1.png';
-import { AuthContext } from '../Context/AuthContext';
 
 const LogInScreen = ({navigation}) => {
     const {Login} = useContext(AuthContext)
@@ -125,7 +126,7 @@ const LogInScreen = ({navigation}) => {
             </Button>
 
             <View style={styles.buttonContainer}>
-                <Button appearance='ghost' onPress={() => navigation.navigate('SingIn')}>
+                <Button appearance='ghost' onPress={() => navigation.navigate('SingIn/Datospersonales')}>
                     Crear una cuenta
                 </Button>
                 <Button appearance='ghost' onPress={() => Linking.openURL('https://www.withsisa.com/forgotPassword')}>

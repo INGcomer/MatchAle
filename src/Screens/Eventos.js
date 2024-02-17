@@ -1,10 +1,13 @@
 // React
 import React, { useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
+// Context
+import { AuthContext } from '../Context/AuthContext';
 // Kitten UI
 import { Text, Divider, Input, Button  } from '@ui-kitten/components';
 
 const EventosScreen = ({navigation}) => {
+    const {Logout} = useContext(AuthContext)
 
     const [value, setValue] = React.useState('');
 
@@ -22,6 +25,10 @@ const EventosScreen = ({navigation}) => {
             />
             <Button>
                 Enviar
+            </Button>
+
+            <Button onPress={() => Logout()}>
+                LogOut
             </Button>
         </View>
     )

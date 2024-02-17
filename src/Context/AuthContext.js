@@ -17,7 +17,7 @@ export const AuthProvider = ({children}) => {
         SetIsLoading(false);
     };
 
-    const Logout = () => {
+    const Logout = (navigation) => {
         SetIsLoading(true);
 
         SetUserToken(null);
@@ -41,7 +41,7 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         IsLoggedIn();
-    }, [])
+    }, [AsyncStorage])
 
     return (
         <AuthContext.Provider value={{Login, Logout, IsLoading, UserToken}}>
