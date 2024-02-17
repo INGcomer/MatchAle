@@ -1,5 +1,4 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import { BottomNavigation, BottomNavigationTab, Layout, Text, Icon, IconElement } from '@ui-kitten/components';
 
 import EventoScreen from '../../Screens/Evento';
@@ -26,7 +25,7 @@ const BottomTabBar = ({ navigation, state }) => (
       <BottomNavigationTab title='MatchesScreen' icon={Matchs}/>
       <BottomNavigationTab title='PerfilScreen' icon={Peril}/>
     </BottomNavigation>
-  );
+);
 
 export default function EventoStack() {
     return (

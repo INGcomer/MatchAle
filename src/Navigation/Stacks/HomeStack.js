@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native'
+import {StyleSheet, View} from 'react-native'
 import { Header, createStackNavigator } from '@react-navigation/stack';
 // Stacks
 import EventoStack from './EventoStack';
@@ -7,7 +7,7 @@ import EventosScreen from '../../Screens/Eventos';
 import EventoScreen from '../../Screens/Evento';
 import PerfilScreen from '../../Screens/Perfil';
 
-import { Icon, IconElement, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Icon, IconElement, TopNavigation, TopNavigationAction, Text } from '@ui-kitten/components';
 
 const BackIcon = (props) => (
   <Icon
@@ -16,29 +16,49 @@ const BackIcon = (props) => (
   />
 );
 
-const BackAction = () => (
-  <TopNavigationAction icon={BackIcon}/>
-);
+// const BackAction = () => (
+//   <TopNavigationAction icon={BackIcon} style={styles.container}/>
+// );
 
-const TopNavigationSimpleUsageShowcase = () => (
-  <TopNavigation
-    accessoryLeft={BackAction}
-    title='Eva Application'
-  />
-);
+// const Title = () => {
+//   return (
+//     <Text> kk </Text>
+//   )
+// }
+
+// const TopNavigationSimpleUsageShowcase = ({navigation}) => (
+//   <TopNavigation
+//     accessoryLeft={BackAction}
+//     // title={Title}
+//     ViewProps={styles.container}
+//     onPress={navigation.goBack}
+//   />
+// );
+
+const MyHeader = ({title, leftButton}) => {
+  return(
+    <View style={styles.container}> 
+      <Text> {title} </Text>
+      {leftButton}
+    </View>
+  )
+}
 
 const Stack = createStackNavigator();
 
 export default function HomeStack() {
   return (
     <Stack.Navigator 
-      initialRouteName='EventoStack' 
-    //   screenOptions={{
-    //     header: TopNavigationSimpleUsageShowcase
-    // }}
+      initialRouteName='Eventos' 
+      screenOptions={{
+        headerMode: 'screen',
+        headerTintColor: 'white',
+        // headerStyle: { backgroundColor: '#202B47' },
+        headerStyle: { backgroundColor: '#101426' },
+      }}
     >
-      <Stack.Screen name="EventosScreen" component={EventosScreen} />
-      <Stack.Screen name="EventoStack" component={EventoStack} />
+      <Stack.Screen name="Eventos" component={EventosScreen} />
+      <Stack.Screen name="EventoStack" options={{title: '',}} component={EventoStack} />
       <Stack.Screen name="PerfilScreen" component={PerfilScreen} />
     </Stack.Navigator>
   );
@@ -47,7 +67,7 @@ export default function HomeStack() {
 
 const styles = StyleSheet.create({
   container: {
-    heith: 128,
-    backgroundColor: '#222B45',
+    // marginTop: '12%'
+    height: 80
   },
 });

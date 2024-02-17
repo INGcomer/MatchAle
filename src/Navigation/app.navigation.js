@@ -7,18 +7,21 @@ import LogInStack from './Stacks/LogInStack';
 import HomeStack from './Stacks/HomeStack';
 
 export default function AppNavigation() {
-    const {UserToken} = useContext(AuthContext)
+    const { UserToken } = useContext(AuthContext)
 
     if (UserToken != null) {
         return (
-            <HomeStack/>
+            <HomeStack />
+
         )
     } else {
         return (
             // <LogInStack/>
-            <HomeStack/>
+            // <HomeStack/>
+
+            <HomeStack />
         )
     }
 
-    
+
 }
